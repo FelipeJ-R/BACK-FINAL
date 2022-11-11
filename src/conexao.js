@@ -1,10 +1,10 @@
 const knex = require('knex')({
     client: 'pg',
     connection: {
-        user: process.env.USER,
-        host: process.env.HOST,
-        database: process.env.DATABASE,
-        password: process.env.PASSWORD,
+        user: "doadmin",
+        host: "market-cubos-do-user-12862024-0.b.db.ondigitalocean.com",
+        database: "defaultdb",
+        password: "AVNS_Ne2rqHEgkZtxvindX1s",
     }
 });
 
