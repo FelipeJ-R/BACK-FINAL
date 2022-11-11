@@ -6,7 +6,10 @@ const knex = require('knex')({
         database: "defaultdb",
         password: "AVNS_Ne2rqHEgkZtxvindX1s",
         port: 25060,
-        sslmode: require
+        sslmode: "require",
+        ssl: {
+            rejectUnauthorized: false
+        }
     }
 });
 
