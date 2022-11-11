@@ -15,6 +15,7 @@ create table produtos (
   	usuario_id integer not null,
   	nome text not null,
   	estoque integer not null,
+  	vendidos integer not null default 0,
   	preco integer not null,
   	categoria text,
   	descricao text,

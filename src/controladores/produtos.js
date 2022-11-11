@@ -76,7 +76,6 @@ const cadastrarProduto = async (req, res) => {
         if (!produto) {
             return res.status(400).json('O produto não foi cadastrado');
         }
-
         return res.status(200).json(produto);
     } catch (error) {
         return res.status(400).json(error.message);
@@ -201,6 +200,49 @@ const atualizarProduto = async (req, res) => {
         return res.status(400).json(error.message);
     }
 }
+const comprarProduto = async (req, res) => {
+    const { id } = req.params;
+    const { quantidade } = req.body;
+
+    if (quantidade % quantidade !== 0 && quantidade > 0) {
+        return res.status(404).json('Verifique quantos itens pretende comprar');
+    }
+
+    try {
+        const produtoEncontrado = await knex('produtos').where({
+            id: id
+        });
+
+        if (produtoEncontrado === undefined) {
+            return res.status(404).json('Produto não encontrado');
+        } else if (produtoEncontrado[0].estoque === 0) {
+            return res.status(404).json(`Infelizmente o estoque de ${produtoEncontrado[0].nome} está zerado`)
+        } else if (produtoEncontrado[0].estoque < quantidade) {
+            return res.status(404).json(`Infelizmente o estoque de ${produtoEncontrado[0].nome} é de apenas ${produtoEncontrado[0].estoque} `)
+        }
+
+        const produto = await knex('produtos')
+            .where({ id })
+            .update({
+                nome: produtoEncontrado[0].nome,
+                estoque: produtoEncontrado[0].estoque - quantidade,
+                preco: produtoEncontrado[0].preco,
+                categoria: produtoEncontrado[0].categoria,
+                descricao: produtoEncontrado[0].descricao,
+                imagem: produtoEncontrado[0].imagem,
+                vendidos: produtoEncontrado[0].vendidos + quantidade
+            });
+
+        if (!produto) {
+            return res.status(400).json("Problema na compra. Tente novamente");
+        }
+
+        return res.status(200).json('Compra realizada com sucesso.');
+
+    } catch (error) {
+        return res.status(400).json(error.message);
+    }
+}
 
 const excluirProduto = async (req, res) => {
     const { usuario } = req;
@@ -238,5 +280,6 @@ module.exports = {
     excluirProduto,
     atualizarImagemProduto,
     excluirImagemProduto,
-    listarMeusProdutos
+    listarMeusProdutos,
+    comprarProduto
 }
