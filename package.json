@@ -1,0 +1,30 @@
+{
+  "name": "back-final",
+  "version": "1.0.0",
+  "description": "![](https://i.imgur.com/xG74tOh.png)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FelipeJ-R/BACK-FINAL.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FelipeJ-R/BACK-FINAL/issues"
+  },
+  "homepage": "https://github.com/FelipeJ-R/BACK-FINAL#readme",
+  "dependencies": {
+    "aws-sdk": "^2.1252.0",
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^2.3.0",
+    "pg": "^8.8.0"
+  }
+}
