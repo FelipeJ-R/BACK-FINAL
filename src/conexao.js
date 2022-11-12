@@ -2,9 +2,9 @@ const knex = require('knex')({
     client: 'pg',
     connection: {
         user: "doadmin",
-        host: "felipe-cubos-marketplace-do-user-12862024-0.b.db.ondigitalocean.com",
+        host: "felipefinaldatabase-do-user-12862024-0.b.db.ondigitalocean.com",
         database: "defaultdb",
-        password: "AVNS_Ne2rqHEgkZtxvindX1s",
+        password: "AVNS_H1R0eRnIirsB3UQOFU0",
         port: 25060,
         sslmode: "require",
         ssl: {
@@ -12,5 +12,5 @@ const knex = require('knex')({
         }
     }
 });
-
+AVNS_H1R0eRnIirsB3UQOFU0
 module.exports = knex;
